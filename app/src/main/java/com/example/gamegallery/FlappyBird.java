@@ -147,14 +147,18 @@ public class FlappyBird extends AppCompatActivity {
         private void checkCollisions() {
             for (Rect pipe : pipes) {
                 if (Rect.intersects(pipe, bird)) {
-                    stopGame();
+                    restartGame();
                     break;
                 }
             }
         }
 
         private void restartGame() {
-            startActivity(getIntent());
+            stopGame();
+            Intent intent = new Intent(getContext(), FlappyBird.class);
+            ((FlappyBird) getContext()).finish();
+            getContext().startActivity(intent);
+
         }
 
         private void draw() {
