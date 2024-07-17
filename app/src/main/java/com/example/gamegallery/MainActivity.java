@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
         CardView ligthParkour = findViewById(R.id.level2);
         CardView memoryMinigame = findViewById(R.id.level3);
         CardView ticTacToe = findViewById(R.id.level4);
-        CardView level5 = findViewById(R.id.level5);
-        CardView level6 = findViewById(R.id.level6);
+        CardView guessmynumber = findViewById(R.id.level5);
+        CardView flappybird = findViewById(R.id.level6);
 
         //Level details layout
         gameDetails = findViewById(R.id.GameDetails);
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         minesweeper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SetGameDetails("Minesweeper",R.drawable.minesweeper, "xd",Minesweeper.class);
+                SetGameDetails("Minesweeper",R.drawable.minesweeper, "Buscaminas un juego simple cuyo objetivo del juego es despejar un campo de minas sin detonar ninguna",Minesweeper.class);
             }
         });
         // light parkour minigame
@@ -108,17 +108,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // al selecionar lvl 5 te manda a el
-        level5.setOnClickListener(new View.OnClickListener() {
+        guessmynumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SetGameDetails("Adivina mi numero",R.drawable.guessmynumber, "Un divertido juego de adivinar mi numero",AdivinaMiNumero.class);
             }
         });
         // al selecionar lvl 6 te manda a el
-        level6.setOnClickListener(new View.OnClickListener() {
+        flappybird.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SetGameDetails("Minesweeper",R.drawable.minesweeper, "xd",Minesweeper.class);
+                SetGameDetails("Flappy Bird",R.drawable.flappybird, "'Flappy Bird' es un videojuego de mecánicas simples que pone al jugador en las plumas de un pájaro que debe esquivar tuberías a la vez que se mantiene en el aire",FlappyBird.class);
             }
         });
 
