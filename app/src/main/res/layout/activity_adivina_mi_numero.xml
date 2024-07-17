@@ -24,7 +24,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="40dp"
             android:text="Bienvenido al Juego de Adivinanza de Números"
             android:textAlignment="center"
             android:textAllCaps="false"
@@ -99,18 +99,70 @@
             android:textColor="#FFFFFF"
             android:textSize="24sp" />
 
-        <Button
-            android:id="@+id/btn_restart"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="75dp"
-            android:backgroundTint="#014"
-            android:text="Reiniciar"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:iconTint="#014" />
-
     </LinearLayout>
+
+    <!-- Boton de pausa    -->
+    <Button
+        android:id="@+id/button_show_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:backgroundTint="#0a1430"
+        android:text="Menu"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Menu de pausa    -->
+    <RelativeLayout
+        android:id="@+id/menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:padding="50dp"
+        android:visibility="gone">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="#B30A1430"
+            android:backgroundTintMode="screen"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="25dp">
+
+            <Button
+                android:id="@+id/button_continue"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#014"
+                android:text="Continue"
+                android:textColor="@color/white"
+                app:icon="@drawable/logo" />
+
+
+            <Button
+                android:id="@+id/button_restart"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="100dp"
+                android:backgroundTint="#014"
+                android:text="Restart"
+                android:textColor="@color/white"
+                app:icon="@drawable/logo" />
+
+            <Button
+                android:id="@+id/button_home"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="170dp"
+                android:backgroundTint="#014"
+                android:text="Home"
+                android:textColor="@color/white"
+                app:icon="@drawable/logo" />
+        </RelativeLayout>
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

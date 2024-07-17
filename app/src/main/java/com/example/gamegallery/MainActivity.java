@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                         "Si el jugador choca con las plataformas, regresará a su posición inicial\n" +
                         "\n" +
                         "Hay plataformas sensibles a la luz que solo se activan cuando hay mucha o poca\n";
-                SetGameDetails("Light Parkour",R.drawable.lightparkour, description,LightParkour.class);
+                SetGameDetails("Light Parkour",R.drawable.lightparkour, description,GameActivity.class);
             }
         });
         // Memory minigame
