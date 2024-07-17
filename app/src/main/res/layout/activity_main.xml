@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-        android:background="@drawable/background">
+    android:background="@drawable/background">
 
 
     <!-- Welcome screen -->
@@ -207,16 +207,16 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:layout_marginTop="10dp"
-                        android:src="@drawable/logo" />
+                        android:src="@drawable/guessmynumber" />
 
                     <TextView
                         android:layout_width="150dp"
                         android:layout_height="50dp"
                         android:layout_marginTop="150dp"
                         android:gravity="center"
-                        android:text="Proximamente"
+                        android:text="Adivina el numero"
                         android:textColor="@color/white"
-                        android:textSize="23dp" />
+                        android:textSize="18dp" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>

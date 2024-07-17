@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         memoryMinigame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SetGameDetails("Minesweeper",R.drawable.memorygame, "xd",Memorama.class);
+                SetGameDetails("Memorama",R.drawable.memorygame, "El objetivo es lograr memorizar la ubicación de las diferentes cartas con el fin de voltear sucesivamente las 2 cartas idénticas que formen pareja, para llevárselas. ",Memorama.class);
             }
         });
         // TicTacToe minigame
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         level5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SetGameDetails("Minesweeper",R.drawable.minesweeper, "xd",Minesweeper.class);
+                SetGameDetails("Adivina mi numero",R.drawable.guessmynumber, "Un divertido juego de adivinar mi numero",AdivinaMiNumero.class);
             }
         });
         // al selecionar lvl 6 te manda a el
