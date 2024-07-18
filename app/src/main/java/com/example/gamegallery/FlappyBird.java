@@ -7,6 +7,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -28,6 +30,11 @@ public class FlappyBird extends AppCompatActivity {
     Button button_continue;
     Button button_restart;
     Button button_home;
+
+    SensorManager sensorManager;
+    Sensor micropho;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +123,8 @@ public class FlappyBird extends AppCompatActivity {
                 return true;
             }
         });
-    }
+
+}
 
     public void showGameOver() {
         runOnUiThread(new Runnable() {

@@ -13,13 +13,14 @@
         android:theme="@style/Theme.GameGallery"
         tools:targetApi="31">
         <activity
+            android:name=".GameActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
             android:name=".FlappyBird"
             android:exported="false" />
         <activity
             android:name=".AdivinaMiNumero"
-            android:exported="false" />
-        <activity
-            android:name=".UnityHandlerActivity"
             android:exported="false" />
         <activity
             android:name=".TicTacToe"
@@ -28,13 +29,6 @@
             android:name=".WinActivity"
             android:exported="true"
             android:screenOrientation="landscape" />
-        <activity
-            android:name=".GameActivity"
-            android:exported="true"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".LightParkour"
-            android:exported="false" />
         <activity
             android:name=".Memorama"
             android:exported="false" />

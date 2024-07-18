@@ -1,16 +1,23 @@
 package com.example.gamegallery;
 
+
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 
 public class GameView extends View implements SensorEventListener {
 
@@ -21,7 +28,7 @@ public class GameView extends View implements SensorEventListener {
     private float accelX = 0, accelY = 0;
 
     // Positions and sizes for the platforms and player
-    private int playerX = 100, playerY = 100, playerSize = 50;
+    private int playerX, playerY, playerSize;
     private int finishX, finishY, finishSize;
 
     // Positions for light-sensitive platforms
@@ -30,8 +37,27 @@ public class GameView extends View implements SensorEventListener {
 
     private int[] darkPlatformX, darkPlatformY;
 
+    // Bitmaps for textures
+    private Bitmap backgroundBitmap;
+
+
+
     public GameView(Context context) {
         super(context);
+        init(context);
+    }
+
+    public GameView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context);
+    }
+
+    public GameView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        init(context);
+    }
+
+    private void init(Context context) {
         paint = new Paint();
         sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
 
@@ -41,8 +67,17 @@ public class GameView extends View implements SensorEventListener {
         sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
         sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME);
 
+        // Load textures
+        try {
+            backgroundBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+
+        } catch (Exception e) {
+            Log.e("GameView", "Error loading bitmaps", e);
+        }
+
         // Initialize platform positions based on screen size
         initializePositions();
+        resetGame();
     }
 
     private void initializePositions() {
@@ -51,12 +86,14 @@ public class GameView extends View implements SensorEventListener {
         int screenHeight = displayMetrics.heightPixels;
 
         // Initialize the size and positions based on screen dimensions
+        playerSize = screenWidth / 25;
         finishSize = screenWidth / 15;
         finishX = screenWidth - finishSize * 2;
         finishY = screenHeight / 2;
 
         platformWidth = screenWidth / 5;
         platformHeight = screenHeight / 20;
+
 
         platformX = new int[]{screenWidth / 10, screenWidth / 5, screenWidth / 3, screenWidth / 2, screenWidth * 3 / 5, screenWidth * 4 / 5};
         platformY = new int[]{screenHeight / 3, screenHeight / 4, screenHeight / 2, screenHeight * 2 / 3, screenHeight / 5, screenHeight / 2};
@@ -69,30 +106,33 @@ public class GameView extends View implements SensorEventListener {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        // Clear the canvas
-        canvas.drawColor(Color.WHITE);
+        // Draw the background
+        if (backgroundBitmap != null) {
+            canvas.drawBitmap(backgroundBitmap, 0, 0, paint);
+        }
 
-        // Draw the player
+
         paint.setColor(Color.BLUE);
-        canvas.drawRect(playerX, playerY, playerX + playerSize, playerY + playerSize, paint);
+        canvas.drawCircle(playerX, playerY, playerSize, paint);
 
-        // Draw the finish circle
         paint.setColor(Color.GREEN);
         canvas.drawCircle(finishX, finishY, finishSize, paint);
 
+
         // Draw light-sensitive platforms
-        if (lightLevel > 150) {
-            paint.setColor(Color.RED);
-            this.setBackgroundResource(R.drawable.background);
+        if (lightLevel > 10) {
+            paint.setColor(Color.WHITE);
             for (int i = 0; i < platformX.length; i++) {
                 canvas.drawRect(platformX[i], platformY[i], platformX[i] + platformWidth, platformY[i] + platformHeight, paint);
                 if (isColliding(playerX, playerY, playerSize, playerSize, platformX[i], platformY[i], platformWidth, platformHeight)) {
                     handleCollision();
                 }
-            }
-        }else {
+        }
+        }
+
+        // Draw dark-sensitive platforms
+        if (lightLevel <= 10) {
             paint.setColor(Color.BLACK);
-            this.setBackgroundResource(R.drawable.darkbackground);
             for (int i = 0; i < darkPlatformX.length; i++) {
                 canvas.drawRect(darkPlatformX[i], darkPlatformY[i], darkPlatformX[i] + platformWidth, darkPlatformY[i] + platformHeight, paint);
                 if (isColliding(playerX, playerY, playerSize, playerSize, darkPlatformX[i], darkPlatformY[i], platformWidth, platformHeight)) {
@@ -125,6 +165,11 @@ public class GameView extends View implements SensorEventListener {
         playerY = 100;
     }
 
+    public void resetGame() {
+        playerX = 100;
+        playerY = 100;
+    }
+
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
@@ -150,3 +195,4 @@ public class GameView extends View implements SensorEventListener {
         // Not used
     }
 }
+

@@ -1,0 +1,76 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <com.example.gamegallery.GameView
+        android:id="@+id/gameView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Boton de pausa    -->
+    <Button
+        android:id="@+id/button_show_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:backgroundTint="#0a1430"
+        android:textColor="@color/white"
+        android:text="Menu" />
+
+    <!-- Menu de pausa    -->
+    <RelativeLayout
+        android:id="@+id/menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:padding="50dp"
+        android:visibility="gone">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="#B30A1430"
+            android:backgroundTintMode="screen"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="25dp">
+
+            <Button
+                android:id="@+id/button_continue"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#014"
+                android:text="Continue"
+                android:textColor="@color/white"
+                app:icon="@drawable/logo" />
+
+
+            <Button
+                android:id="@+id/button_restart"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="100dp"
+                android:backgroundTint="#014"
+                android:text="Restart"
+                android:textColor="@color/white"
+                app:icon="@drawable/logo" />
+
+            <Button
+                android:id="@+id/button_home"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="170dp"
+                android:backgroundTint="#014"
+                android:text="Home"
+                android:textColor="@color/white"
+                app:icon="@drawable/logo" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>

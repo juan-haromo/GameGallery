@@ -9,7 +9,6 @@
     tools:context=".TicTacToe"
     android:background="@drawable/background">
 
-    <!-- Boton de pausa    -->
     <GridLayout
         android:id="@+id/gridLayout"
         android:layout_width="wrap_content"
